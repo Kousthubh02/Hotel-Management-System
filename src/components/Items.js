@@ -1,24 +1,18 @@
 import React from 'react'
 import {Link} from "react-router-dom"
+import './styles/Items.css'
 
 
-// var clickCount=0;
-// function click(element) {
-//     clickCount++;
-//     if(clickCount%2!=0){
-//         element.style.color = "red";
-//         element.innerHTML="remove from list"
-//     }   
-//   }
+
 
 function Items() {
   return (<>
 <div className="container d-flex justify-content-between">
 {/* <button type="button" class="btn btn-danger">Go back</button> */}
-<Link className="btn btn-success"to="/Payment">Checkout</Link>
+<Link className="btn btn-success my-2"to="/Payment">Checkout</Link>
 
 </div>
-    <div className='container info-div overflow-auto' >
+    <div className='container containertable info-div overflow-auto' >
       <table className="table">
   <thead>
     <tr>

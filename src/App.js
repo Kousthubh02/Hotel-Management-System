@@ -9,8 +9,8 @@ import Categories from './components/Categories';
 import Arrived from './components/Arrived';
 import Rating from './components/Rating';
 import Thankyou from './components/Thankyou';
-import Waiting from './components/Waiting';
 import Payment from './components/Payment';
+import Timer from './components/mini-component/Timer';
 
 
 export default function App() {
@@ -18,17 +18,18 @@ export default function App() {
     <>
      <Router>
     <Navbar1/>
-      <div className="container">
+      <div>
         <Routes>
           <Route exact path="/" element={<Homepage/>}/>
           <Route exact path="/Categories" element={<Categories/>}/>
           <Route exact path="/Items" element={<Items/>}/>
           <Route exact path="/Payment" element={<Payment/>}/>
-          <Route exact path="/Waiting" element={<Waiting/>}/>
+          <Route exact path="/Waiting" element={<Timer/>}/>
           <Route exact path="/Arrived" element={<Arrived/>}/>
           <Route exact path="/Rating" element={<Rating/>}/>
           <Route exact path="/Thankyou" element={<Thankyou/>}/>
         </Routes>
+        <Footer/>
       </div>
      </Router>
     </>

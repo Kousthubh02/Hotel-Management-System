@@ -6,8 +6,8 @@ function Category_card(props) {
   return (
     // using card from bootstrap
     <div>
-      <div className="card" style={{width: '18rem'}}>
-  <img src="..." className="card-img-top" alt="this is an image"/>
+      <div className="card" style={{width: '18rem',borderRadius:"15px"}}>
+  <img src="images/south.jpg" className="card-img-top" alt="this is an image"/>
   <div className="card-body">
     <h5 className="card-title">{props.title}</h5>
     <p className="card-text">{props.content}</p>

@@ -6,8 +6,8 @@ function Rating() {
     <div>
       <div className="container">
         <h2>Please rate our dishes</h2>
-
-        <table className="table">
+<div className="container d-flex justify-content-center">
+<table className="table">
   <thead>
     <tr>
       <th scope="col">#</th>
@@ -47,7 +47,20 @@ function Rating() {
     </tr>
   </tbody>
 </table>
-<Link to="/ThankYou">Thankyou</Link>
+</div>
+      
+{/* <Link to="/ThankYou">Thankyou</Link> */}
+<div className="container d-flex justify-content-center">
+<button type="button" className="btn btn-success ">
+              <Link
+                  style={{ textDecoration: "none", color: "white" }}
+                  to="/ThankYou"
+                >
+                  Submit
+                </Link>
+              </button>
+
+</div>
 
     </div>
     </div>

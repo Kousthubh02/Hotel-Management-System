@@ -1,0 +1,47 @@
+h1 {
+    font-family: "Roboto";
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  
+  .timer-wrapper {
+      display: flex;
+      justify-content: center;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 5px;
+      width: fit-content;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 30px;
+      box-shadow: 5px;
+      background: rgba(225, 255, 255, 0.29);
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+      margin: auto;
+    
+  
+  }
+
+  
+  
+  .timer {
+    font-family: "Montserrat";
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .text {
+    color: #aaa;
+  }
+  
+  .value {
+    font-size: 40px;
+  }
+  
+  .info {
+    max-width: 360px;
+    margin: 40px auto 0;
+    text-align: center;
+    font-size: 16px;
+  }
+  

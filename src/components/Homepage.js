@@ -10,8 +10,7 @@ function Homepage() {
   // }
   return (
     <>
-    <div className="container">
-      <div id="carouselExampleIndicators" className="carousel slide">
+      <div id="carouselExampleIndicators" className="carousel slide carousel-fade">
         <div className="carousel-indicators">
           <button
             type="button"
@@ -37,7 +36,8 @@ function Homepage() {
         <div className="carousel-inner">
           <div className="carousel-item active">
             <img
-              /*style={style}*/ src="images/4.jpeg"
+               src="images/1.jpeg"
+              // src="https://source.unsplash.com/random/1580x800?food"
               className="d-block w-100 img-fluid"
               alt="this is an image"
             />
@@ -56,15 +56,13 @@ function Homepage() {
           </div>
           <div className="carousel-item">
             <img
-              src="images/4.jpeg"
+              src="images/2.jpeg"
               className="d-block w-100 img-fluid"
               alt="this is an image"
             />
             <div className="carousel-caption d-none d-md-block">
-              <h5>First slide label</h5>
-              <p>
-                Some representative placeholder content for the first slide.
-              </p>
+            <h5>Welcome to myHotel</h5>
+              <p>Connecting service with technology.</p>
               <button type="button" className="btn btn-primary">
               <Link
                   style={{ textDecoration: "none", color: "white" }}
@@ -78,15 +76,13 @@ function Homepage() {
           <div className="carousel-item">
             <img
               style={{ height: "100%", width: "auto" }}
-              src="images/4.jpeg"
+              src="images/3.jpeg"
               className="d-block w-100 img-fluid"
               alt="this is an image"
             />
             <div className="carousel-caption d-none d-md-block">
-              <h5>First slide label</h5>
-              <p>
-                Some representative placeholder content for the first slide.
-              </p>
+            <h5>Welcome to myHotel</h5>
+              <p>Connecting service with technology.</p>
               <button type="button" className="btn btn-primary">
               <Link className="btn btn-primary" to="/Categories">Place Order</Link>
               </button>
@@ -117,7 +113,6 @@ function Homepage() {
           ></span>
           <span className="visually-hidden">Next</span>
         </button>
-      </div>
       </div>
     </>
   );

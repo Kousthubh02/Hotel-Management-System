@@ -10,7 +10,7 @@ function Homepage() {
   // }
   return (
     <>
-      <div id="carouselExampleIndicators" className="carousel slide carousel-fade">
+      <div id="carouselExampleIndicators" className="carousel slide carousel-fade" data-interval="1000">
         <div className="carousel-indicators">
           <button
             type="button"
@@ -36,7 +36,7 @@ function Homepage() {
         <div className="carousel-inner">
           <div className="carousel-item active">
             <img
-               src="images/1.jpeg"
+               src="images/4.jpeg"
               // src="https://source.unsplash.com/random/1580x800?food"
               className="d-block w-100 img-fluid"
               alt="this is an image"
@@ -56,7 +56,7 @@ function Homepage() {
           </div>
           <div className="carousel-item">
             <img
-              src="images/2.jpeg"
+              src="images/5.jpeg"
               className="d-block w-100 img-fluid"
               alt="this is an image"
             />
@@ -76,7 +76,7 @@ function Homepage() {
           <div className="carousel-item">
             <img
               style={{ height: "100%", width: "auto" }}
-              src="images/3.jpeg"
+              src="images/6.jpeg"
               className="d-block w-100 img-fluid"
               alt="this is an image"
             />

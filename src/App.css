@@ -4,7 +4,11 @@ body{
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center;
-    background-image: linear-gradient(to bottom right, #939B62, #FFD56F, #FFB26B,#FF7B54);
+    /* background-image: linear-gradient(to bottom right, #939B62, #FFD56F, #FFB26B,#FF7B54); */
+   /* background-image: linear-gradient(to bottom right, #939B62, #FFD56F, #FFB26B,#FF7B54);  */
+   background-image: linear-gradient(to bottom right, #A1C298, #C6EBC5, #FBF2CF,#F9F5E7);
+
+
     
     
 }

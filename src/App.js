@@ -11,6 +11,7 @@ import Rating from './components/Rating';
 import Thankyou from './components/Thankyou';
 import Payment from './components/Payment';
 import Timer from './components/mini-component/Timer';
+import Cart from './components/Cart';
 
 
 export default function App() {
@@ -28,6 +29,7 @@ export default function App() {
           <Route exact path="/Arrived" element={<Arrived/>}/>
           <Route exact path="/Rating" element={<Rating/>}/>
           <Route exact path="/Thankyou" element={<Thankyou/>}/>
+          <Route exact path="/Cart" element={<Cart/>}/>
         </Routes>
         <Footer/>
       </div>

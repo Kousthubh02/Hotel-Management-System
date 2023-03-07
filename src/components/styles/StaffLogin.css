@@ -1,0 +1,10 @@
+.usr,.pass{
+    font-family: 'Times New Roman', Times, serif;
+    font-size: large;
+    font-weight: bold;
+}
+.containerlogin{
+    background: rgba(225, 255, 255, 0.29);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+}

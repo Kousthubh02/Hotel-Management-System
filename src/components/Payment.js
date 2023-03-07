@@ -1,65 +1,63 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import './styles/Payment.css'
+
 
 function Payment() {
   return (
     <div>
-      <section style={{ backgroundColor: "#eee" }}>
-        <div className="container py-5">
-          <div className="row d-flex justify-content-center">
-            <div className="col-md-8 col-lg-6 col-xl-4">
-              <div className="card rounded-3">
-                <div className="card-body mx-1 my-2">
-                  <div className="d-flex align-items-center">
-                    <div>
-                      <i className="fab fa-cc-visa fa-4x text-black pe-3"></i>
-                    </div>
-                    <div>
-                      <p className="d-flex flex-column mb-0">
-                        <b>Name of the person</b>
-                        <span className="small text-muted">**** 8880</span>
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="pt-3">
-                    <div className="d-flex flex-row pb-3">
-                      <div
-                        className="rounded border border-primary border-2 d-flex w-100 p-3 align-items-center"
-                        style={{ backgroundColor: "rgba(18, 101, 241, 0.07)" }}
-                      >
-                        <div className="d-flex align-items-center pe-3">
-                          <input
-                            className="form-check-input"
-                            type="radio"
-                            name="radioNoLabelX"
-                            id="radioNoLabel11"
-                            value=""
-                            aria-label="..."
-                            defaultChecked
-                          />
-                        </div>
-                        <div className="d-flex flex-column">
-                          <p className="mb-1 small text-primary">
-                            Total amount due
-                          </p>
-                          <h6 className="mb-0 text-primary">$</h6>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="d-flex justify-content-between align-items-center">
-                <Link className="btn btn-primary btn-lg" to="/Waiting">
-                  Pay amount
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <div>
+      <div class="containerpay">
+        {" "}
+        <div class="wrapper">
+          {" "}
+          <div class="outer-card">
+            {" "}
+            <div class="forms">
+              {" "}
+              <div class="input-items">
+                {" "}
+                <span>Card Number</span>{" "}
+                <input
+                  placeholder=".... .... .... ...."
+                  data-slots="."
+                  data-accept="\d"
+                  size="19"
+                />{" "}
+              </div>{" "}
+              <div class="input-items">
+                {" "}
+                <span>
+                  Name on card
+                </span> <input placeholder="Enter your name" />{" "}
+              </div>{" "}
+              <div class="one-line">
+                {" "}
+                <div class="input-items">
+                  {" "}
+                  <span>Expiry Date</span>{" "}
+                  <input placeholder="mm/yyyy" data-slots="my" />{" "}
+                </div>{" "}
+                <div class="input-items">
+                  {" "}
+                  <span>CVV</span>{" "}
+                  <input
+                    placeholder="..."
+                    data-slots="."
+                    data-accept="\d"
+                    size="3"
+                  />{" "}
+                </div>{" "}
+              </div>{" "}
+              <div class="input-buttons">
+               <Link to="/Waiting">Pay</Link> {" "}
+                {" "}
+              </div>{" "}
+            </div>{" "}
+          </div>{" "}
+        </div>{" "}
+      </div>
+    </div>
     </div>
   );
 }

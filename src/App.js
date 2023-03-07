@@ -12,6 +12,8 @@ import Thankyou from './components/Thankyou';
 import Payment from './components/Payment';
 import Timer from './components/mini-component/Timer';
 import Cart from './components/Cart';
+import Staff from './components/StaffLogin';
+import StaffPortal from './components/StaffPortal';
 
 
 export default function App() {
@@ -29,9 +31,11 @@ export default function App() {
           <Route exact path="/Arrived" element={<Arrived/>}/>
           <Route exact path="/Rating" element={<Rating/>}/>
           <Route exact path="/Thankyou" element={<Thankyou/>}/>
-          <Route exact path="/Cart" element={<Cart/>}/>
+          {/* <Route exact path="/Cart" element={<Cart/>}/> */}
+          <Route exact path="/Staff" element={<Staff/>}/>
+          <Route exact path="/StaffPortal" element={<StaffPortal/>}/>
         </Routes>
-        <Footer/>
+        {/* <Footer/> */}
       </div>
      </Router>
     </>

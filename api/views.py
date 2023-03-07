@@ -70,7 +70,6 @@ def Dessert_view(request):
     return JsonResponse(serializer.data,safe=False)
 
 def Logindetail_view(request):
-
     pass
 
 

@@ -7,16 +7,17 @@ from api import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('Category/',views.Category_view ),
-    path('HotDrinks/', admin.site.urls),
-    path('Mojito/', admin.site.urls),
-    path('Sandwitch/', admin.site.urls),
-    path('Pizza/', admin.site.urls),
+    path('Southindian/',views.Southindian_view ),
+    path('HotDrinks/', views.HotDrinks_view),
+    path('Mojito/', views.Mojito_view),
+    path('Sandwitch/', views.Sandwitch_view),
+    path('Pizza/', views.Pizza_view),
     path('Burger/', views.Burger_view),
-    path('PavBhaji/', admin.site.urls),
-    path('Punjabi/', admin.site.urls),
-    path('Chinese/', admin.site.urls),
-    path('Rice/', admin.site.urls),
-    path('Milkshake/', admin.site.urls),
-    path('Dessert/', admin.site.urls),
+    path('PavBhaji/', views.PavBhaji_view),
+    path('Punjabi/', views.Punjabi_view),
+    path('Chinese/', views.Chinese_view),
+    path('Rice/', views.Rice_view),
+    path('Milkshake/', views.Milkshake_view),
+    path('Dessert/', views.Dessert_view)
 ]
 # +static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

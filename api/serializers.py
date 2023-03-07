@@ -6,9 +6,14 @@ class CategorySerializer(serializers.ModelSerializer):
         model=Category
         fields='__all__'
 
-class SouthIndianSerializer(serializers.ModelSerializer):
+class SouthindianSerializer(serializers.ModelSerializer):
     class Meta:
         model=Southindian
+        fields='__all__'
+
+class HotDrinksSerializer(serializers.ModelSerializer):
+    class Meta:
+        model=HotDrinks
         fields='__all__'
 
 class MojitoSerializer(serializers.ModelSerializer):

@@ -25,7 +25,7 @@ export default function App() {
         <Routes>
           <Route exact path="/" element={<Homepage/>}/>
           <Route exact path="/Categories" element={<Categories/>}/>
-          <Route exact path="/Items" element={<Items/>}/>
+          <Route exact path="Items/:categoryName" element={<Items/>}/>
           <Route exact path="/Payment" element={<Payment/>}/>
           <Route exact path="/Waiting" element={<Timer/>}/>
           <Route exact path="/Arrived" element={<Arrived/>}/>

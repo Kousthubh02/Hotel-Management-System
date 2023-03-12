@@ -9,7 +9,7 @@ import {Link} from 'react-router-dom'
 
 const renderTime = ({ remainingTime }) => {
   if (remainingTime === 0) {
-    return window.location.replace("http://localhost:3000/Arrived");
+    return window.location.replace("http://localhost:3001/Arrived");
   }
 
   const minutes = parseInt(remainingTime / 60);

@@ -1,17 +1,16 @@
 import React from 'react'
 import {Link} from "react-router-dom"
-import PropTypes from "prop-types";
+
 // this is the card that displays categories
-function Category_card(props) {
+function Category_card({name,img}) {
   return (
     // using card from bootstrap
-    <div>
+    <div className='my-4'>
       <div className="card" style={{width: '18rem',borderRadius:"15px"}}>
-  <img src="images/south.jpg" className="card-img-top" alt="this is an image"/>
+  <img  className="card-img-top" src={img} alt="this is an image"/>
   <div className="card-body">
-    <h5 className="card-title">{props.title}</h5>
-    <p className="card-text">{props.content}</p>
-    <Link className="btn btn-primary" to="/Items">See items</Link>
+    <h5 className="card-title">{name}</h5>
+    <Link className="btn btn-primary my-2 mx-2" to={`/Items/${name}`}>See items</Link>
   </div>
 </div>
     </div>
@@ -20,10 +19,5 @@ function Category_card(props) {
 
 export default Category_card
 // add the proptypes here
-Category_card.propTypes={title:PropTypes.string,content:PropTypes.string};
 
-// setting the default props
-Category_card.defaultProps={
-    title:"set title",
-    content:"about this category",
-};
+

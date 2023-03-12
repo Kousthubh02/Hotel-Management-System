@@ -1,93 +1,65 @@
-import React from 'react'
-import {Link} from "react-router-dom"
-import './styles/Items.css'
+// working code to fetch items but fetching only one 
 
+import React, { useState,useEffect } from "react";
+import {Link, useParams} from "react-router-dom"
+import ItemList from './ItemList';
+import ProductList from "./ProductList";
+function Items({id,name,price})  {
 
+  
+  const [cart,setCart]=useState([]);
 
+// function to add item in cart
+  const handleClick=(item)=>{
+    if (cart.indexOf(item) !== -1) return;
+    setCart([...cart, item]);
+    console.log('pushed');
+  }
+// function to remove item from cart
+  const handleRemove=(id)=>{
+    const arr=cart.filter((item)=>item.id!==id);
+    setCart(arr);
+  }
 
-function Items() {
+  const { categoryName } = useParams();
+  const [categoryData, setCategoryData] = useState([]);
+  const [categoryNameState, setCategoryName] = useState("");
+
+  useEffect(() => {
+    fetch(`http://localhost:8000/${categoryName}/?name=${name}&id=${id}&price=${price}`)
+      .then(response => response.json())
+      .then(data => setCategoryData(data));
+      
+    fetch(`http://localhost:8000/Category/`)
+      .then(response => response.json())
+      .then(data => setCategoryName(data));
+  }, [categoryName]);
+  
   return (
-  <>
+  <div>
 <div className="container d-flex justify-content-between">
 <div className="container my-4 d-flex justify-content-end">
    
 <div>
-<button class="btn btn-warning" type="button" data-bs-toggle="offcanvas" data-bs-target="#staticBackdrop" aria-controls="staticBackdrop">
+<button className="btn btn-warning" type="button" data-bs-toggle="offcanvas" data-bs-target="#staticBackdrop" aria-controls="staticBackdrop">
   View Cart
 </button>
 
-<div class="offcanvas offcanvas-start" data-bs-backdrop="static" tabindex="-1" id="staticBackdrop" aria-labelledby="staticBackdropLabel">
-  <div class="offcanvas-header">
-    <h5 class="offcanvas-title" id="staticBackdropLabel"></h5>
-    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+<div className="offcanvas offcanvas-start" data-bs-backdrop="static" tabIndex="-1" id="staticBackdrop" aria-labelledby="staticBackdropLabel">
+  <div className="offcanvas-header">
+    <h5 className="offcanvas-title" id="staticBackdropLabel"></h5>
+    <button type="button" className="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
   </div>
-  <div class="offcanvas-body">
+  <div className="offcanvas-body">
     <div>      
       <Link className="btn btn-success my-2"to="/Payment">Checkout</Link>
     </div>
-    <div>
-              <div class="row mb-4 d-flex justify-content-between align-items-center">
-                
-                <div class="col-md-3 col-lg-3 col-xl-3">
-                  <h6 class="text-black mb-0">item1</h6>
-                </div>
-                
-                <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
-                  <h6 class="mb-0">Rs 400</h6>
-                </div>
-                <div class="col-md-2 col-lg-2 col-xl-2 offset-lg-1">
-                <button className="btn btn-danger">Remove</button>
-                </div>
-                <div class="col-md-1 col-lg-1 col-xl-1 text-end">
-                  <a href="#!" class="text-muted">
-                    <i class="fas fa-times"></i>
-                  </a>
-                </div>
-              </div>
+    {
+      cart.map((item)=>{
+       return <ProductList id={item.id} name={item.name} price={item.price} handleRemove={handleRemove}/>
 
-              <hr class="my-4" />
-
-              <div class="row mb-4 d-flex justify-content-between align-items-center">
-                
-                <div class="col-md-3 col-lg-3 col-xl-3">
-                  <h6 class="text-black mb-0">item 2</h6>
-                </div>
-                <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
-                  <h6 class="mb-0">Rs 400</h6>
-                </div>
-                <div class="col-md-2 col-lg-2 col-xl-2 offset-lg-1">
-                <button className="btn btn-danger">Remove</button>
-                </div>
-                <div class="col-md-1 col-lg-1 col-xl-1 text-end">
-                  <a href="#!" class="text-muted">
-                    <i class="fas fa-times"></i>
-                  </a>
-                </div>
-              </div>
-
-              <hr class="my-4" />
-
-              <div class="row mb-4 d-flex justify-content-between align-items-center">
-              
-                <div class="col-md-3 col-lg-3 col-xl-3">
-                  <h6 class="text-black mb-0">item 3</h6>
-                </div>
-                
-                <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
-                  <h6 class="mb-0">Rs 400</h6>
-                </div>
-                <div class="col-md-2 col-lg-2 col-xl-2 offset-lg-1">
-                  <button className="btn btn-danger">Remove</button>
-                </div>
-                <div class="col-md-1 col-lg-1 col-xl-1 text-end">
-                  <a href="#!" class="text-muted">
-                    <i class="fas fa-times"></i>
-                  </a>
-                </div>
-              </div>
-
-              <hr class="my-4" />
-            </div>
+      })
+    }
   </div>
 </div>
 </div>
@@ -106,30 +78,18 @@ function Items() {
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>item 1</td>
-      <td>200</td>
-      <td> <button /*onClick={click(this)}*/ type="button" className="btn btn-primary">Add to list</button> </td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>item 2</td>
-      <td>300</td>
-      <td><button /*onClick={click(this)}*/ type="button" className="btn btn-primary">Add to list</button></td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td >item 3</td>
-      <td >50</td>
-      <td><button /*onClick={click(this)}*/ type="button" className="btn btn-primary">Add to list</button></td>
-    </tr>
+  {
+  categoryData.map((curItem)=>{
+    return <ItemList key={curItem.id} id={curItem.id} item={curItem} name={curItem.name} price={curItem.price} handleClick={handleClick}/>
+  })
+}
+
   </tbody>
 </table>
     </div>
-    
-  </>
-  )
+  
+    </div>
+  );
 }
 
-export default Items
+export default Items;

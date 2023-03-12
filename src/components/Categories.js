@@ -1,17 +1,37 @@
-import React from 'react'
-import navbar2 from './Navbar2';
+import React, { useState, useEffect } from 'react';
 import Category_card from './sub-components/Category_card';
-import './styles/Categories.css'
+import './styles/Categories.css';
 
 function Categories() {
+  const [categories, setCategories] = useState([]);
+  const [imageURL, setImageURL] = useState('');
+  useEffect(() => {
+    fetch('http://localhost:8000/Category/')
+    .then((response) => response.json())
+    .then((data) => {
+      setCategories(data);
+      return data;
+    })
+    .then((data) => fetch(data[0].image))
+    .then((response) => response.blob())
+    .then((blob) => setImageURL(URL.createObjectURL(blob)))
+    .catch((error) => console.log(error));
+  
+  }, []);
+
   return (
-    <div className="containercategory">
-      
-    <div className='my-4 container'> 
-      <Category_card title="South Indian" content="find the best south indian food here"/>
+    <div className="container">
+      <div className="row justify-content-center">
+        {categories.map((category) => (
+          <div className="containercategory">
+            <div className="col-md-6 col-lg-4 mb-4" key={category.id}>
+              <Category_card key={category.id} name={category.name} img={category.image} />
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
-    </div>
-  )
+  );
 }
 
-export default Categories
+export default Categories;

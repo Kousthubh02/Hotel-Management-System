@@ -7,7 +7,9 @@ from django.http import JsonResponse
 def Category_view(request):
     cat=Category.objects.all()
     serializer=CategorySerializer(cat,many=True)
-    return JsonResponse(serializer.data,safe=False)
+    response=JsonResponse(serializer.data,safe=False)
+    response['Access-Control-Allow-Origin'] = '*'
+    return response
 
 def Southindian_view(request):
     cat=Southindian.objects.all()

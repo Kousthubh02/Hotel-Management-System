@@ -41,10 +41,16 @@ function StaffPortal() {
   const handleToggleCheckoutStatus = checkoutId => {
     const updatedData = checkoutData.map(checkout => {
       if (checkout.id === checkoutId) {
-        const updatedItems = checkout.items.map(item => ({
-          ...item,
-          status: 'Done'
-        }));
+        const updatedItems = checkout.items.map(item => {
+          if (item.status === 'Pending') {
+            return {
+              ...item,
+              status: 'Done'
+            };
+          } else {
+            return item;
+          }
+        });
         return {
           ...checkout,
           items: updatedItems
@@ -54,6 +60,17 @@ function StaffPortal() {
       }
     });
     setCheckoutData(updatedData);
+  
+    fetch(`http://localhost:8000/checkout/${checkoutId}/`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ items: updatedData.find(checkout => checkout.id === checkoutId).items }),
+    })
+      .then(response => response.json())
+      .then(data => console.log('Checkout updated:', data))
+      .catch(error => console.error(error));
   };
 
   return (

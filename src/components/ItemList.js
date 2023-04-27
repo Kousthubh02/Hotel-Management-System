@@ -5,8 +5,13 @@ function ItemList({ id, name, price, handleClick, item }) {
   const [buttonClass, setButtonClass] = useState('btn btn-primary');
 
   const handleOnClick = () => {
-    setButtonText('Added to Cart');
-    setButtonClass('btn btn-success');
+    if (buttonText === 'Add to Cart') {
+      setButtonText('Added to Cart');
+      setButtonClass('btn btn-success');
+    } else {
+      setButtonText('Add to Cart');
+      setButtonClass('btn btn-primary');
+    }
   };
 
   return (

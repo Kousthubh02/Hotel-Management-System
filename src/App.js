@@ -14,13 +14,15 @@ import Timer from './components/mini-component/Timer';
 import Cart from './components/Cart';
 import Staff from './components/StaffLogin';
 import StaffPortal from './components/StaffPortal';
-
+import React, { useState,useEffect } from "react";
 
 export default function App() {
+  const [cart,setCart]=useState([]);
+  
   return (
     <>
      <Router>
-    <Navbar1/>
+      <Navbar1/>
       <div>
         <Routes>
           <Route exact path="/" element={<Homepage/>}/>
@@ -31,7 +33,7 @@ export default function App() {
           <Route exact path="/Arrived" element={<Arrived/>}/>
           <Route exact path="/Rating" element={<Rating/>}/>
           <Route exact path="/Thankyou" element={<Thankyou/>}/>
-          {/* <Route exact path="/Cart" element={<Cart/>}/> */}
+          <Route exact path="/Cart" element={<Cart/>}/>
           <Route exact path="/Staff" element={<Staff/>}/>
           <Route exact path="/StaffPortal" element={<StaffPortal/>}/>
         </Routes>

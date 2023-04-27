@@ -1,10 +1,59 @@
-.header{
-    width: fit-content;
-    height: auto;
-}
-
-.bg{
-    background: rgba(225, 255, 255, 0.29);
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+.staff-portal {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .staff-portal h1 {
+    font-size: 32px;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  .checkout-section {
+    margin-bottom: 20px;
+  }
+  
+  .checkout-section {
+    /* Other styles for the checkout section */
+    padding: 1rem;
+    margin-bottom: 1rem;
     border-radius: 20px;
-}
+    box-shadow: 0 0 16px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+  }
+  
+  .checkout-items {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .checkout-items li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 18px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+  }
+  
+  .checkout-items li .item-name {
+    flex: 1;
+  }
+  
+  .checkout-items li .item-price {
+    font-weight: bold;
+  }
+
+  .btn.pending {
+    /* Styles for the button when it's in "Pending" state */
+    background-color: #f0ad4e;
+  }
+  
+  .btn.done {
+    /* Styles for the button when it's in "Done" state */
+    background-color: #5cb85c;
+  }

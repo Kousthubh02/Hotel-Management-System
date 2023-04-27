@@ -18,5 +18,6 @@ urlpatterns = [
     path('Chinese/', views.Chinese_view),
     path('Rice/', views.Rice_view),
     path('Milkshake/', views.Milkshake_view),
-    path('Dessert/', views.Dessert_view)
+    path('Dessert/', views.Dessert_view),
+    path('checkout/', views.checkoutView)
 ]+static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

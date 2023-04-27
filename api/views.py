@@ -73,6 +73,30 @@ def Dessert_view(request):
 
 def Logindetail_view(request):
     pass
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
+from .models import checkout
+from .serializers import checkoutSerializer
 
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
+import json
+@csrf_exempt
+def checkoutView(request):
+    if request.method == 'GET':
+        checkouts = checkout.objects.all()
+        serializer = checkoutSerializer(checkouts, many=True)
+        return JsonResponse(serializer.data, safe=False)
 
+    elif request.method == 'POST':
+        data = json.loads(request.body)
+        serializer = checkoutSerializer(data=data, many=True)
+        if serializer.is_valid():
+            serializer.save()
+            return JsonResponse(serializer.data, status=201,safe=False)
+        else:
+            return JsonResponse(serializer.errors, status=400,safe=False)
+
+    else:
+        return JsonResponse({'error': 'Invalid request method.'}, status=405,safe=False)
 

@@ -66,3 +66,8 @@ class DessertSerializer(serializers.ModelSerializer):
         model=Dessert
         fields='__all__'
 
+class checkoutSerializer(serializers.ModelSerializer):
+    class Meta:
+        model=checkout
+        fields='__all__'
+

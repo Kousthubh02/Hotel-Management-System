@@ -19,5 +19,6 @@ urlpatterns = [
     path('Rice/', views.Rice_view),
     path('Milkshake/', views.Milkshake_view),
     path('Dessert/', views.Dessert_view),
-    path('checkout/', views.checkoutView)
+    path('checkout/', views.checkoutView),
+    path('stafflogin/', views.staff_login)
 ]+static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

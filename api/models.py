@@ -112,15 +112,18 @@ class Dessert(models.Model):
         return self.name
 
 # for details of login
-class StaffDetails(models.Model):
-    user_name=models.CharField(max_length=50)
-    password=models.CharField(max_length=15)
-    def __str__(self):
-        return self.name
+from django.db import models
     
 from django.db import models
 class checkout(models.Model):
     items=models.JSONField()
+
+class User(models.Model):
+    username = models.CharField(max_length=50)
+    password = models.CharField(max_length=50)
+
+    def __str__(self):
+        return self.username
     
 
     

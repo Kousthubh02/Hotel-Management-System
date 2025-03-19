@@ -111,6 +111,8 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from .serializers import UserSerializer
 
+
+@csrf_exempt
 @api_view(['POST'])
 def staff_login(request):
     serializer = UserSerializer(data=request.data)

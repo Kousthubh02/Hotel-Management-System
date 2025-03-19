@@ -1,16 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import Navbar2 from "./Navbar2";
-
 function Homepage() {
-  // const style={
-  //   'height':'100vh',
-  //   'width' : 'auto'
-  // }
   return (
     <>
-      <div id="carouselExampleIndicators" className="carousel slide carousel-fade" data-interval="1000">
+      <div
+        id="carouselExampleIndicators"
+        className="carousel slide carousel-fade"
+        data-bs-ride="carousel"
+        data-bs-interval="3000" // Adjust the interval as needed
+      >
+        {/* Carousel Indicators */}
         <div className="carousel-indicators">
           <button
             type="button"
@@ -33,62 +33,53 @@ function Homepage() {
             aria-label="Slide 3"
           ></button>
         </div>
+
+        {/* Carousel Inner Content */}
         <div className="carousel-inner">
+          {/* Slide 1 */}
           <div className="carousel-item active">
-            <img
-               src="images/4.jpeg"
-              // src="https://source.unsplash.com/random/1580x800?food"
-              className="d-block w-100 img-fluid"
-              alt="this is an image"
-            />
-            <div className="carousel-caption d-none d-md-block">
-              <h5>Welcome to myHotel</h5>
-              <p>Connecting service with technology.</p>
-              <button type="button" className="btn btn-primary">
+            <div className="carousel-content bg-primary text-white d-flex flex-column justify-content-center align-items-center p-5">
+              <h1 className="display-3 mb-4">Welcome to myHotel</h1>
+              <p className="lead mb-5">Experience luxury like never before.</p>
               <Link
-                  style={{ textDecoration: "none", color: "white" }}
-                  to="/Categories"
-                >
-                  Place Order
-                </Link>
-              </button>
+                to="/Categories"
+                className="btn btn-light btn-lg"
+              >
+                Explore Services
+              </Link>
             </div>
           </div>
+
+          {/* Slide 2 */}
           <div className="carousel-item">
-            <img
-              src="images/5.jpeg"
-              className="d-block w-100 img-fluid"
-              alt="this is an image"
-            />
-            <div className="carousel-caption d-none d-md-block">
-            <h5>Welcome to myHotel</h5>
-              <p>Connecting service with technology.</p>
-              <button type="button" className="btn btn-primary">
+            <div className="carousel-content bg-success text-white d-flex flex-column justify-content-center align-items-center p-5">
+              <h1 className="display-3 mb-4">Connecting Service with Technology</h1>
+              <p className="lead mb-5">Book your stay with ease.</p>
               <Link
-                  style={{ textDecoration: "none", color: "white" }}
-                  to="/Categories"
-                >
-                  Place Order
-                </Link>
-              </button>
+                to="/Categories"
+                className="btn btn-light btn-lg"
+              >
+                Book Now
+              </Link>
             </div>
           </div>
+
+          {/* Slide 3 */}
           <div className="carousel-item">
-            <img
-              style={{ height: "100%", width: "auto" }}
-              src="images/6.jpeg"
-              className="d-block w-100 img-fluid"
-              alt="this is an image"
-            />
-            <div className="carousel-caption d-none d-md-block">
-            <h5>Welcome to myHotel</h5>
-              <p>Connecting service with technology.</p>
-              <button type="button" className="btn btn-primary">
-              <Link className="btn btn-primary" to="/Categories">Place Order</Link>
-              </button>
+            <div className="carousel-content bg-warning text-dark d-flex flex-column justify-content-center align-items-center p-5">
+              <h1 className="display-3 mb-4">Special Offers</h1>
+              <p className="lead mb-5">Enjoy exclusive discounts on your next booking.</p>
+              <Link
+                to="/Categories"
+                className="btn btn-dark btn-lg"
+              >
+                View Offers
+              </Link>
             </div>
           </div>
         </div>
+
+        {/* Carousel Navigation Buttons */}
         <button
           className="carousel-control-prev"
           type="button"

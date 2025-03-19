@@ -1,0 +1,22 @@
+/* Custom CSS for Carousel */
+.carousel-content {
+    height: 90vh; /* Increase carousel height */
+    padding: 4rem; /* Add more padding */
+  }
+  
+  .carousel-control-prev,
+  .carousel-control-next {
+    width: 5%;
+    background-color: rgba(0, 0, 0, 0.3); /* Semi-transparent background */
+  }
+  
+  .carousel-control-prev-icon,
+  .carousel-control-next-icon {
+    filter: invert(1); /* Make arrows white */
+  }
+  
+  /* Ensure the carousel takes full width */
+  .carousel {
+    width: 100%;
+    margin: 0 auto;
+  }

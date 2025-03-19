@@ -33,7 +33,7 @@ export default function App() {
           <Route exact path="/Arrived" element={<Arrived/>}/>
           <Route exact path="/Rating" element={<Rating/>}/>
           <Route exact path="/Thankyou" element={<Thankyou/>}/>
-          <Route exact path="/Cart" element={<Cart/>}/>
+          {/* <Route exact path="/Cart" element={<Cart/>}/> */}
           <Route exact path="/Staff" element={<Staff/>}/>
           <Route exact path="/StaffPortal" element={<StaffPortal/>}/>
         </Routes>

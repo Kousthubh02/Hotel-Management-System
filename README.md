@@ -1,12 +1,11 @@
-To install React and React Scripts, use the following command:
 
+In order to use the client , make sure the server is running and install node modules and react-scripts in the directory using the following command
 ```sh
-npx create-react-app my-app
+npm install 
+npm install react react-scripts
 ```
 
-After the installation is complete, navigate to your project directory and run:
-
+now that node modules are installed , we can start the development server by using
 ```sh
-cd my-app
-npm install
+npm start
 ```

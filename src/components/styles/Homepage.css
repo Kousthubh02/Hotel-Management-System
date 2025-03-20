@@ -1,22 +1,31 @@
-/* Custom CSS for Carousel */
+/* Custom CSS for Full-Screen Carousel */
+.carousel {
+  width: 100%;
+  height: 100vh; /* Full viewport height */
+  margin: 0 auto;
+}
+
 .carousel-content {
-    height: 90vh; /* Increase carousel height */
-    padding: 4rem; /* Add more padding */
-  }
-  
-  .carousel-control-prev,
-  .carousel-control-next {
-    width: 5%;
-    background-color: rgba(0, 0, 0, 0.3); /* Semi-transparent background */
-  }
-  
-  .carousel-control-prev-icon,
-  .carousel-control-next-icon {
-    filter: invert(1); /* Make arrows white */
-  }
-  
-  /* Ensure the carousel takes full width */
-  .carousel {
-    width: 100%;
-    margin: 0 auto;
-  }
+  height: 100vh; /* Full viewport height */
+  padding: 4rem; /* Add more padding */
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Center content vertically */
+  align-items: center; /* Center content horizontally */
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+  width: 5%;
+  background-color: rgba(0, 0, 0, 0.3); /* Semi-transparent background */
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  filter: invert(1); /* Make arrows white */
+}
+
+/* Ensure carousel items take full height */
+.carousel-item {
+  height: 100vh; /* Full viewport height */
+}

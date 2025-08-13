@@ -1,5 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
+import './index.css'
 import Navbar1 from './components/Navbar1';
 import Homepage from './components/Homepage';
 import Footer from './components/Footer';

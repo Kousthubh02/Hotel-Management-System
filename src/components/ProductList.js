@@ -1,34 +1,38 @@
-import React from 'react'
-import Counter from './Counter'
-function ProductList({id,name,price,handleRemove}) {
-  
-  return (
-       <div>
-              <div className="row mb-4 d-flex justify-content-between align-items-center">
-                
-                <div className="col-md-3 col-lg-3 col-xl-3">
-                  <h6 className="text-black mb-0">{name}</h6>
-                </div>
+import React, { useState } from 'react';
 
-                <div className="col-md-3 col-lg-3 col-xl-3">
-                  <Counter/>
-                </div>
-                
-                <div className="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
-                  <h6 className="mb-0">{price}</h6>
-                </div>
-                <div className="col-md-2 col-lg-2 col-xl-2 offset-lg-1">
-                <button className="btn btn-danger" onClick={()=>handleRemove(id)}>Remove</button>
-                </div>
-                <div className="col-md-1 col-lg-1 col-xl-1 text-end">
-                  <a href="#!" className="text-muted">
-                    <i className="fas fa-times"></i>
-                  </a>
-                </div>
-              </div>
-              <hr className="my-4" />
-            </div>
-  )
+function Counter({ name = "Dish" }) {
+  const [count, setCount] = useState(1);
+
+  const increment = () => setCount((prev) => prev + 1);
+  const decrement = () => {
+    if (count > 1) setCount((prev) => prev - 1);
+  };
+
+  return (
+    <div className="flex flex-col items-start space-y-2">
+      {/* Dish Name */}
+      <span className="text-gray-800 font-medium text-base">{name}</span>
+
+      {/* Counter Controls */}
+      <div className="flex items-center space-x-3">
+        <button
+          onClick={decrement}
+          className="bg-gray-200 hover:bg-gray-300 text-gray-700 font-bold px-3 py-1 rounded"
+        >
+          −
+        </button>
+
+        <span className="w-8 text-center text-lg font-semibold">{count}</span>
+
+        <button
+          onClick={increment}
+          className="bg-gray-200 hover:bg-gray-300 text-gray-700 font-bold px-3 py-1 rounded"
+        >
+          +
+        </button>
+      </div>
+    </div>
+  );
 }
 
-export default ProductList
+export default Counter;

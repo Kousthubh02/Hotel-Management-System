@@ -1,111 +1,83 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
+const slides = [
+  {
+    title: "Welcome to 56-East",
+    subtitle: "Experience luxury like never before.",
+    buttonText: "Explore Services",
+    link: "/Categories",
+    bg: "bg-blue-600",
+    text: "text-white",
+  },
+  {
+    title: "Connecting Service with Technology",
+    subtitle: "Book your stay with ease.",
+    buttonText: "Book Now",
+    link: "/Categories",
+    bg: "bg-green-600",
+    text: "text-white",
+  },
+  {
+    title: "Special Offers",
+    subtitle: "Enjoy exclusive discounts on your next booking.",
+    buttonText: "View Offers",
+    link: "/Categories",
+    bg: "bg-yellow-400",
+    text: "text-gray-900",
+  },
+];
+
 function Homepage() {
+  const [current, setCurrent] = useState(0);
+
+  // Auto-advance every 3 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrent((prev) => (prev + 1) % slides.length);
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
-    <>
-      <div
-        id="carouselExampleIndicators"
-        className="carousel slide carousel-fade"
-        data-bs-ride="carousel"
-        data-bs-interval="3000" // Adjust the interval as needed
+    <div className="relative w-full h-screen overflow-hidden z-0">
+      {slides.map((slide, index) => (
+        <div
+          key={index}
+          className={`absolute inset-0 flex flex-col justify-center items-center transition-opacity duration-1000 ease-in-out ${
+            index === current ? "opacity-100 z-10" : "opacity-0 z-0"
+          } ${slide.bg} ${slide.text}`}
+        >
+          <h1 className="text-5xl font-bold mb-4 text-center px-4">{slide.title}</h1>
+          <p className="text-xl mb-6 text-center px-4">{slide.subtitle}</p>
+          <Link
+            to={slide.link}
+            className={`px-6 py-3 rounded text-lg font-semibold ${
+              slide.text === "text-white"
+                ? "bg-white text-blue-600"
+                : "bg-gray-900 text-white"
+            } hover:opacity-90 transition`}
+          >
+            {slide.buttonText}
+          </Link>
+        </div>
+      ))}
+
+      {/* Navigation buttons */}
+      <button
+        onClick={() => setCurrent((current - 1 + slides.length) % slides.length)}
+        className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-black/30 hover:bg-black/50 text-white p-3 rounded-full z-50"
       >
-        {/* Carousel Indicators */}
-        <div className="carousel-indicators">
-          <button
-            type="button"
-            data-bs-target="#carouselExampleIndicators"
-            data-bs-slide-to="0"
-            className="active"
-            aria-current="true"
-            aria-label="Slide 1"
-          ></button>
-          <button
-            type="button"
-            data-bs-target="#carouselExampleIndicators"
-            data-bs-slide-to="1"
-            aria-label="Slide 2"
-          ></button>
-          <button
-            type="button"
-            data-bs-target="#carouselExampleIndicators"
-            data-bs-slide-to="2"
-            aria-label="Slide 3"
-          ></button>
-        </div>
-
-        {/* Carousel Inner Content */}
-        <div className="carousel-inner">
-          {/* Slide 1 */}
-          <div className="carousel-item active">
-            <div className="carousel-content bg-primary text-white d-flex flex-column justify-content-center align-items-center p-5">
-              <h1 className="display-3 mb-4">Welcome to myHotel</h1>
-              <p className="lead mb-5">Experience luxury like never before.</p>
-              <Link
-                to="/Categories"
-                className="btn btn-light btn-lg"
-              >
-                Explore Services
-              </Link>
-            </div>
-          </div>
-
-          {/* Slide 2 */}
-          <div className="carousel-item">
-            <div className="carousel-content bg-success text-white d-flex flex-column justify-content-center align-items-center p-5">
-              <h1 className="display-3 mb-4">Connecting Service with Technology</h1>
-              <p className="lead mb-5">Book your stay with ease.</p>
-              <Link
-                to="/Categories"
-                className="btn btn-light btn-lg"
-              >
-                Book Now
-              </Link>
-            </div>
-          </div>
-
-          {/* Slide 3 */}
-          <div className="carousel-item">
-            <div className="carousel-content bg-warning text-dark d-flex flex-column justify-content-center align-items-center p-5">
-              <h1 className="display-3 mb-4">Special Offers</h1>
-              <p className="lead mb-5">Enjoy exclusive discounts on your next booking.</p>
-              <Link
-                to="/Categories"
-                className="btn btn-dark btn-lg"
-              >
-                View Offers
-              </Link>
-            </div>
-          </div>
-        </div>
-
-        {/* Carousel Navigation Buttons */}
-        <button
-          className="carousel-control-prev"
-          type="button"
-          data-bs-target="#carouselExampleIndicators"
-          data-bs-slide="prev"
-        >
-          <span
-            className="carousel-control-prev-icon"
-            aria-hidden="true"
-          ></span>
-          <span className="visually-hidden">Previous</span>
-        </button>
-        <button
-          className="carousel-control-next"
-          type="button"
-          data-bs-target="#carouselExampleIndicators"
-          data-bs-slide="next"
-        >
-          <span
-            className="carousel-control-next-icon"
-            aria-hidden="true"
-          ></span>
-          <span className="visually-hidden">Next</span>
-        </button>
-      </div>
-    </>
+        ‹
+      </button>
+      <button
+        onClick={() => setCurrent((current + 1) % slides.length)}
+        className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-black/30 hover:bg-black/50 text-white p-3 rounded-full z-50"
+      >
+        ›
+      </button>
+    </div>
   );
 }
 

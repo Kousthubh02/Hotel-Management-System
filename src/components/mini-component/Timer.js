@@ -1,42 +1,35 @@
-
 import React from "react";
-import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import { CountdownCircleTimer } from "react-countdown-circle-timer";
-import "./Timer.css";
-import Thankyou from '../Thankyou';
-import {Link} from 'react-router-dom'
+import { Link } from "react-router-dom";
 
 const renderTime = ({ remainingTime }) => {
   if (remainingTime === 0) {
     return window.location.replace("http://localhost:3001/Arrived");
   }
 
-  const minutes = parseInt(remainingTime / 60);
+  const minutes = Math.floor(remainingTime / 60);
   const seconds = remainingTime % 60;
 
   return (
-    <div className="container d-flex inline-block justify-content-center align-items-center"style={{height:"100vh"}}>
-    <div className="timer">
-      <div className="text">Remaining</div>
+    <div className="flex flex-col items-center justify-center h-full">
+      <div className="text-lg text-gray-700 font-semibold mb-2">Remaining</div>
       {minutes ? (
-        <div className="value">
-          {`${minutes} minutes`}
+        <div className="text-center text-xl font-bold text-blue-600">
+          {`${minutes} minute${minutes !== 1 ? "s" : ""}`}
           <br />
-          {`${seconds} seconds`}
+          {`${seconds} second${seconds !== 1 ? "s" : ""}`}
         </div>
       ) : (
-        <div className="value">{`${seconds} seconds`}</div>
-        )}
+        <div className="text-xl font-bold text-red-600">{`${seconds} second${seconds !== 1 ? "s" : ""}`}</div>
+      )}
     </div>
-        </div>
   );
 };
 
 function Timer() {
   return (
-    <div className="App d-flex inline-block justify-content-center align-items-center"style={{height:"100vh"}}>
-      <div className="timer-wrapper">
+    <div className="flex flex-col items-center justify-center h-screen bg-white">
+      <div className="flex flex-col items-center gap-6">
         <CountdownCircleTimer
           isPlaying
           duration={70}
@@ -46,7 +39,13 @@ function Timer() {
         >
           {renderTime}
         </CountdownCircleTimer>
-      <Link to='/Arrived'>Skip</Link>
+
+        <Link
+          to="/Arrived"
+          className="text-blue-600 hover:underline text-sm font-medium"
+        >
+          Skip
+        </Link>
       </div>
     </div>
   );

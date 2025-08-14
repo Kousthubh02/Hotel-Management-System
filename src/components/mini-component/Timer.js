@@ -4,7 +4,8 @@ import { Link } from "react-router-dom";
 
 const renderTime = ({ remainingTime }) => {
   if (remainingTime === 0) {
-    return window.location.replace("http://localhost:3001/Arrived");
+    window.location.replace("http://localhost:3001/Arrived");
+    return null; // Render nothing since redirecting
   }
 
   const minutes = Math.floor(remainingTime / 60);
@@ -20,7 +21,9 @@ const renderTime = ({ remainingTime }) => {
           {`${seconds} second${seconds !== 1 ? "s" : ""}`}
         </div>
       ) : (
-        <div className="text-xl font-bold text-red-600">{`${seconds} second${seconds !== 1 ? "s" : ""}`}</div>
+        <div className="text-xl font-bold text-red-600">
+          {`${seconds} second${seconds !== 1 ? "s" : ""}`}
+        </div>
       )}
     </div>
   );
@@ -28,8 +31,30 @@ const renderTime = ({ remainingTime }) => {
 
 function Timer() {
   return (
-    <div className="flex flex-col items-center justify-center h-screen bg-white">
-      <div className="flex flex-col items-center gap-6">
+    <div
+      className="flex items-center justify-center min-h-screen px-4"
+      style={{
+        backgroundRepeat: "no-repeat",
+        backgroundAttachment: "fixed",
+        backgroundPosition: "center",
+        backgroundImage:
+          "linear-gradient(to bottom right, #A1C298, #C6EBC5, #FBF2CF, #F9F5E7)",
+      }}
+    >
+      <div
+        className="
+          font-sans
+          text-center
+          p-12
+          border border-white/20
+          rounded-[50px]
+          bg-white/30
+          shadow-[0_4px_30px_rgba(0,0,0,0.1)]
+          mx-auto
+          w-full max-w-md
+          flex flex-col items-center gap-6
+        "
+      >
         <CountdownCircleTimer
           isPlaying
           duration={70}

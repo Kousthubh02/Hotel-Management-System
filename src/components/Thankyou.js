@@ -19,15 +19,26 @@ function Thankyou() {
           'linear-gradient(to bottom right, #A1C298, #C6EBC5, #FBF2CF, #F9F5E7)',
       }}
     >
-      <div className="bg-white p-10 rounded-xl shadow-lg max-w-md text-center">
-        <h1 className="text-4xl font-bold mb-4 text-gray-800">Thank You!</h1>
+      <div
+        className="
+          font-sans
+          text-center
+          p-12
+          border border-white/20
+          rounded-[50px]
+          bg-white/30
+          shadow-[0_4px_30px_rgba(0,0,0,0.1)]
+          mx-auto
+          w-full max-w-md
+        "
+      >
+        <h1 className="text-4xl font-bold mb-8 text-gray-800">Thank You!</h1>
         <p className="mb-2 text-gray-700">Hope you enjoyed your meal</p>
         <p className="mb-2 text-gray-700">
           If you have any questions or concerns, please don't hesitate to contact us.
         </p>
         <p className="text-gray-700">
           Best regards,
-          <br />
           <br />
           The 56-East Team
         </p>

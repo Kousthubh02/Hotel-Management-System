@@ -27,6 +27,41 @@ To create a virtual environment and install Django, Django REST framework, Djang
 
 This will show you a list of installed packages, including Django, Django REST framework, Django CORS headers, and Pillow.
 
+5. **Apply database migrations** (migrations are already included):
+    ```bash
+    python manage.py migrate
+    ```
+
+6. **Create a superuser (optional, for admin access)**:
+    ```bash
+    python manage.py createsuperuser
+    ```
+
+7. **Run the development server**:
+    ```bash
+    python manage.py runserver
+    ```
+
+The server will start at `http://127.0.0.1:8000/` or `http://localhost:8000/`
+
+## Database Management
+
+**Important Notes:**
+- The SQLite database (`db.sqlite3`) and all migrations are included in version control
+- This preserves menu items, categories, and database schema across different environments
+- For new setups, simply run `python manage.py migrate` to apply existing migrations
+- Only run `python manage.py makemigrations` if you've made new model changes
+- To reset the database completely (this will delete all data):
+  ```bash
+  # Delete the database file
+  del db.sqlite3  # Windows
+  # rm db.sqlite3  # macOS/Linux
+  
+  # Recreate and migrate
+  python manage.py migrate
+  python manage.py createsuperuser
+  ```
+
 
 
 ## API Routes

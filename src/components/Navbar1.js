@@ -41,14 +41,7 @@ function Navbar1() {
                     Categories
                   </a>
                 </li>
-                <li>
-                  <a
-                    className="block px-4 py-2 hover:bg-gray-100 text-sm"
-                    href="/Items"
-                  >
-                    Items
-                  </a>
-                </li>
+                
                 <li>
                   <a
                     className="block px-4 py-2 hover:bg-gray-100 text-sm"

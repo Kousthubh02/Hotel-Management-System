@@ -38,7 +38,7 @@ export default function App() {
           <Route exact path="/Staff" element={<Staff/>}/>
           <Route exact path="/StaffPortal" element={<StaffPortal/>}/>
         </Routes>
-        {/* <Footer/> */}
+        <Footer/>
       </div>
      </Router>
     </>

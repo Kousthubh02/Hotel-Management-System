@@ -50,6 +50,14 @@ function Navbar1() {
                     Pay
                   </a>
                 </li>
+                <li>
+                  <a
+                    className="block px-4 py-2 hover:bg-gray-100 text-sm"
+                    href="/Staff"
+                  >
+                    Staff Login
+                  </a>
+                </li>
               </ul>
             )}
           </div>

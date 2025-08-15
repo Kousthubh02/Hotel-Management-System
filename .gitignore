@@ -153,7 +153,6 @@ $RECYCLE.BIN/
 
 # Media files (uncomment if you don't want to track uploaded images)
 # media/
-# api/images/
 
 # Static files (uncomment if you want to exclude collected static files)
 # staticfiles/

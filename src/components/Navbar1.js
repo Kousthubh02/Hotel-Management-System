@@ -1,39 +1,68 @@
-import React from "react";
-import './styles/Navbar.css'
+import React, { useState } from "react";
 
 function Navbar1() {
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+
   return (
-    
-     <nav className="navbar navbar-expand-lg bg-body-tertiary">
-  <div className="container-fluid">
-    {/* <a className="navbar-brand" href="#">FIFTY FIVE EAST</a> */}
-    <a className="navbar-brand" href="#">56-EAST</a>
-    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-      <span className="navbar-toggler-icon"></span>
-    </button>
-    <div className="collapse navbar-collapse" id="navbarNavDropdown">
-      <ul className="navbar-nav">
-        <li className="nav-item">
-          <a className="nav-link active" aria-current="page" href="/">Home</a>
-        </li>
-        {/* <li className="nav-item">
-          <a className="nav-link" href="#">About</a>
-        </li> */}
-        <li className="nav-item dropdown">
-          <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Order link
+    <nav className="relative z-50 w-full bg-white/30 backdrop-blur-md shadow-lg border border-white/20 font-sans">
+      <div className="container mx-auto px-4 py-3 flex justify-between items-center">
+        {/* Logo / Brand */}
+        <a className="text-2xl font-bold text-gray-800" href="#">
+          56-EAST
+        </a>
+
+        {/* Nav Links */}
+        <div className="flex items-center space-x-6">
+          {/* Home Link */}
+          <a
+            className="text-gray-800 hover:text-blue-500 transition"
+            href="/"
+          >
+            Home
           </a>
-          <ul className="dropdown-menu">
-            <li><a className="dropdown-item" href="/Categories">Categories</a></li>
-            <li><a className="dropdown-item" href="/Items">Items</a></li>
-            <li><a className="dropdown-item" href="/Payment">Pay</a></li>
-          </ul>
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav>
-    
+
+          {/* Dropdown */}
+          <div className="relative">
+            <button
+              onClick={() => setDropdownOpen(!dropdownOpen)}
+              className="text-gray-800 hover:text-blue-500 transition focus:outline-none"
+            >
+              Order link ▾
+            </button>
+
+            {/* Dropdown menu */}
+            {dropdownOpen && (
+              <ul className="absolute right-0 mt-2 w-40 bg-white border border-gray-200 rounded shadow-lg z-50">
+                <li>
+                  <a
+                    className="block px-4 py-2 hover:bg-gray-100 text-sm"
+                    href="/Categories"
+                  >
+                    Categories
+                  </a>
+                </li>
+                <li>
+                  <a
+                    className="block px-4 py-2 hover:bg-gray-100 text-sm"
+                    href="/Items"
+                  >
+                    Items
+                  </a>
+                </li>
+                <li>
+                  <a
+                    className="block px-4 py-2 hover:bg-gray-100 text-sm"
+                    href="/Payment"
+                  >
+                    Pay
+                  </a>
+                </li>
+              </ul>
+            )}
+          </div>
+        </div>
+      </div>
+    </nav>
   );
 }
 

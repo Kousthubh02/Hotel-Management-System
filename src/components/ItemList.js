@@ -1,30 +1,33 @@
 import React, { useState } from 'react';
 
 function ItemList({ id, name, price, handleClick, item }) {
-  const [buttonText, setButtonText] = useState('Add to Cart');
-  const [buttonClass, setButtonClass] = useState('btn btn-primary');
+  const [isAdded, setIsAdded] = useState(false);
 
   const handleOnClick = () => {
-    if (buttonText === 'Add to Cart') {
-      setButtonText('Added to Cart');
-      setButtonClass('btn btn-success');
-    } else {
-      setButtonText('Add to Cart');
-      setButtonClass('btn btn-primary');
-    }
+    setIsAdded(!isAdded);
   };
 
   return (
-    <tr>
-      <th scope="row">{id}</th>
-      <td>{name}</td>
-      <td>{price}</td>
-      <td>
-        <button onClick={() => {
-          handleClick(item);
-          handleOnClick();
-        }} type="button" className={buttonClass}>
-          {buttonText}
+    <tr className="border-b border-gray-200 text-center">
+      <th scope="row" className="py-3 px-4 font-medium text-gray-900">
+        {id}
+      </th>
+      <td className="py-3 px-4 text-gray-700">{name}</td>
+      <td className="py-3 px-4 text-gray-700">${price}</td>
+      <td className="py-3 px-4">
+        <button
+          onClick={() => {
+            handleClick(item);
+            handleOnClick();
+          }}
+          type="button"
+          className={`px-4 py-2 rounded font-semibold transition duration-200 ${
+            isAdded
+              ? 'bg-green-600 text-white hover:bg-green-700'
+              : 'bg-blue-600 text-white hover:bg-blue-700'
+          }`}
+        >
+          {isAdded ? 'Added to Cart' : 'Add to Cart'}
         </button>
       </td>
     </tr>

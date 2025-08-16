@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import './index.css'
 import Navbar1 from './components/Navbar1';
@@ -12,13 +11,12 @@ import Rating from './components/Rating';
 import Thankyou from './components/Thankyou';
 import Payment from './components/Payment';
 import Timer from './components/mini-component/Timer';
-import Cart from './components/Cart';
-import Staff from './components/StaffLogin';
 import StaffPortal from './components/StaffPortal';
-import React, { useState,useEffect } from "react";
+import { useState } from "react";
+import StaffLogin from './components/StaffLogin';
 
 export default function App() {
-  const [cart,setCart]=useState([]);
+  
   
   return (
     <>
@@ -35,10 +33,10 @@ export default function App() {
           <Route exact path="/Rating" element={<Rating/>}/>
           <Route exact path="/Thankyou" element={<Thankyou/>}/>
           {/* <Route exact path="/Cart" element={<Cart/>}/> */}
-          <Route exact path="/Staff" element={<Staff/>}/>
+          <Route exact path="/Staff" element={<StaffLogin/>}/>
           <Route exact path="/StaffPortal" element={<StaffPortal/>}/>
         </Routes>
-        {/* <Footer/> */}
+        <Footer/>
       </div>
      </Router>
     </>

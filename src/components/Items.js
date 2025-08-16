@@ -6,6 +6,9 @@ import ProductList from "./ProductList";
 function Items({ id, name, price }) {
   const [cart, setCart] = useState({ items: [], total: 0 });
   const [cartItems, setCartItems] = useState([]);
+  const [categoryData, setCategoryData] = useState([]);
+
+  const { categoryName } = useParams();
 
   const handleClick = (item) => {
     if (cart.items.some((i) => i.id === item.id)) return;
@@ -50,19 +53,11 @@ function Items({ id, name, price }) {
       });
   };
 
-  const { categoryName } = useParams();
-  const [categoryData, setCategoryData] = useState([]);
-  const [categoryNameState, setCategoryName] = useState("");
-
   useEffect(() => {
     fetch(`http://localhost:8000/${categoryName}/?name=${name}&id=${id}&price=${price}`)
       .then((response) => response.json())
       .then((data) => setCategoryData(data));
-
-    fetch(`http://localhost:8000/Category/`)
-      .then((response) => response.json())
-      .then((data) => setCategoryName(data));
-  }, [categoryName]);
+  }, [categoryName, id, name, price]);
 
   return (
     <div className="w-full px-4 py-6">
@@ -121,7 +116,7 @@ function Items({ id, name, price }) {
 
       {/* Item Table */}
       <div className="overflow-x-auto bg-white rounded shadow p-4">
-        <table className="min-w-full text-left border border-gray-200">
+        <table className="min-w-full text-center border border-gray-200 table-fixed">
           <thead className="bg-gray-100 border-b border-gray-300">
             <tr>
               <th className="py-2 px-4">#</th>

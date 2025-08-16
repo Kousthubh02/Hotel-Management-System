@@ -4,14 +4,31 @@ function handleLogin(event) {
   event.preventDefault();
   const form = event.target;
   const data = new FormData(form);
+  const loginData = Object.fromEntries(data);
+
+  console.log('Sending login data:', loginData); // Debug log
 
   fetch('/stafflogin/', {
     method: 'POST',
+
     body: JSON.stringify(Object.fromEntries(data)),
     headers: { 'Content-Type': 'application/json' },
+=======
+    body: JSON.stringify(loginData),
+    headers: {
+      'Content-Type': 'application/json',
+    },
+
   })
-    .then(response => response.json())
+    .then(response => {
+      console.log('Response status:', response.status); // Debug log
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      return response.json();
+    })
     .then(data => {
+      console.log('Response data:', data); // Debug log
       if (data.success) {
         window.location.href = '/StaffPortal/';
       } else {
@@ -19,13 +36,14 @@ function handleLogin(event) {
       }
     })
     .catch(error => {
-      console.error(error);
-      alert('An error occurred while logging in.');
+      console.error('Login error:', error);
+      alert(`An error occurred while logging in: ${error.message}`);
     });
 }
 
 function StaffLogin(props) {
   return (
+
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-green-200 via-yellow-100 to-amber-100 px-4">
       <form
         onSubmit={handleLogin}
@@ -46,6 +64,14 @@ function StaffLogin(props) {
             placeholder="Enter your username"
             required
           />
+=======
+    <form className="container d-flex inline-block justify-content-center align-items-center" style={{height:"100vh"}} onSubmit={handleLogin}>
+      <div className="container containerlogin py-4 " style={{width:"fit-content"}}>
+        <h1>Login</h1>
+        <div className="container d-flex justify-content-center align-items-center">
+          <label htmlFor="username" className='form-label mx-2 usr'>Username:</label>
+          <input type="text" className='mx-2 my-2 form-control' placeholder='Enter your username' name="username" />
+
         </div>
 
         <div className="mb-5">

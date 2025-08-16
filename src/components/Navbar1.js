@@ -13,6 +13,14 @@ function Navbar1() {
 
         {/* Nav Links */}
         <div className="flex items-center space-x-6">
+          {/* Staff Login Button */}
+          <a
+            href="/Staff"
+            className="bg-blue-500 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-blue-600 transition"
+          >
+            Staff Login
+          </a>
+
           {/* Home Link */}
           <a
             className="text-gray-800 hover:text-blue-500 transition"
@@ -41,21 +49,12 @@ function Navbar1() {
                     Categories
                   </a>
                 </li>
-                
                 <li>
                   <a
                     className="block px-4 py-2 hover:bg-gray-100 text-sm"
                     href="/Payment"
                   >
                     Pay
-                  </a>
-                </li>
-                <li>
-                  <a
-                    className="block px-4 py-2 hover:bg-gray-100 text-sm"
-                    href="/Staff"
-                  >
-                    Staff Login
                   </a>
                 </li>
               </ul>

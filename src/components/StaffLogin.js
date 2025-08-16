@@ -6,7 +6,7 @@ function handleLogin(event) {
   const data = new FormData(form);
   const loginData = Object.fromEntries(data);
 
-  console.log('Sending login data:', loginData); // Debug log
+  console.log('Sending login data:', loginData);
 
   fetch('/stafflogin/', {
     method: 'POST',
@@ -16,14 +16,14 @@ function handleLogin(event) {
     },
   })
     .then(response => {
-      console.log('Response status:', response.status); // Debug log
+      console.log('Response status:', response.status);
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
       return response.json();
     })
     .then(data => {
-      console.log('Response data:', data); // Debug log
+      console.log('Response data:', data);
       if (data.success) {
         window.location.href = '/StaffPortal/';
       } else {
@@ -37,20 +37,58 @@ function handleLogin(event) {
 }
 
 function StaffLogin(props) {
+  const backgroundStyle = {
+    backgroundImage: 'linear-gradient(to bottom right, #A1C298, #C6EBC5, #FBF2CF, #F9F5E7)',
+    backgroundRepeat: 'no-repeat',
+    backgroundAttachment: 'fixed',
+    backgroundPosition: 'center',
+  };
+
   return (
-    <form className="container d-flex inline-block justify-content-center align-items-center" style={{height:"100vh"}} onSubmit={handleLogin}>
-      <div className="container containerlogin py-4" style={{width:"fit-content"}}>
-        <h1>Login</h1>
-        <div className="container d-flex justify-content-center align-items-center">
-          <label htmlFor="username" className='form-label mx-2 usr'>Username:</label>
-          <input type="text" className='mx-2 my-2 form-control' placeholder='Enter your username' name="username" required />
+    <form
+      className="flex items-center justify-center min-h-screen"
+      style={backgroundStyle}
+      onSubmit={handleLogin}
+    >
+      <div
+        className="rounded-xl p-8 w-96 border-1 border-gray-500 shadow-lg"
+        style={backgroundStyle}
+      >
+        <h1 className="text-2xl font-bold text-center text-gray-800 mb-6">Staff Login</h1>
+
+        <div className="mb-4">
+          <label htmlFor="username" className="block text-gray-700 font-medium mb-1">
+            Username
+          </label>
+          <input
+            type="text"
+            name="username"
+            placeholder="Enter your username"
+            required
+            className="w-full px-3 py-1.5 border border-gray-400 rounded-md text-sm focus:outline-none focus:ring focus:ring-green-200"
+          />
         </div>
-        <div className="container d-flex justify-content-center align-items-center">
-          <label htmlFor="password" className='form-label mx-2 pass'>Password:</label>
-          <input type="password" className='mx-2 my-2 form-control' placeholder='Enter your password' name="password" required />
+
+        <div className="mb-6">
+          <label htmlFor="password" className="block text-gray-700 font-medium mb-1">
+            Password
+          </label>
+          <input
+            type="password"
+            name="password"
+            placeholder="Enter your password"
+            required
+            className="w-full px-3 py-1.5 border border-gray-400 rounded-md text-sm focus:outline-none focus:ring focus:ring-green-200"
+          />
         </div>
-        <div className="container d-flex justify-content-center my-2">
-          <button type='submit' className='btn btn-outline-primary btn-lg'>Login</button>
+
+        <div className="flex justify-center">
+          <button
+            type="submit"
+            className="bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-6 rounded-md transition duration-200"
+          >
+            Login
+          </button>
         </div>
       </div>
     </form>

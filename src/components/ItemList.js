@@ -4,7 +4,8 @@ function ItemList({ id, name, price, handleClick, item }) {
   const [isAdded, setIsAdded] = useState(false);
 
   const handleOnClick = () => {
-    setIsAdded(true); // prevent toggling back
+    handleClick(item);
+    setIsAdded(true);
   };
 
   return (
@@ -14,10 +15,7 @@ function ItemList({ id, name, price, handleClick, item }) {
       <td className="py-3 px-4 text-gray-700">${price}</td>
       <td className="py-3 px-4">
         <button
-          onClick={() => {
-            handleClick(item);
-            handleOnClick();
-          }}
+          onClick={handleOnClick}
           type="button"
           className={`px-4 py-2 rounded font-semibold transition duration-200 ${
             isAdded

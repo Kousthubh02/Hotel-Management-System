@@ -5,25 +5,56 @@ import ProductList from "./ProductList";
 
 function Items({ id, name, price }) {
   const [cart, setCart] = useState({ items: [], total: 0 });
-  const [cartItems, setCartItems] = useState([]);
   const [categoryData, setCategoryData] = useState([]);
-
   const { categoryName } = useParams();
 
   const handleClick = (item) => {
-    if (cart.items.some((i) => i.id === item.id)) return;
-    setCart({
-      items: [...cart.items, item],
-      total: cart.total + item.price,
-    });
+    const existingItem = cart.items.find((i) => i.id === item.id);
+
+    if (existingItem) {
+      const updatedItems = cart.items.map((i) =>
+        i.id === item.id ? { ...i, quantity: i.quantity + 1 } : i
+      );
+      setCart({
+        items: updatedItems,
+        total: cart.total + item.price,
+      });
+    } else {
+      setCart({
+        items: [...cart.items, { ...item, quantity: 1 }],
+        total: cart.total + item.price,
+      });
+    }
   };
 
   const handleRemove = (id) => {
     const itemToRemove = cart.items.find((item) => item.id === id);
-    setCart({
-      items: cart.items.filter((item) => item.id !== id),
-      total: cart.total - itemToRemove.price,
+    if (!itemToRemove) return;
+
+    const updatedItems = cart.items.filter((item) => item.id !== id);
+    const newTotal = cart.total - itemToRemove.price * itemToRemove.quantity;
+
+    setCart({ items: updatedItems, total: newTotal });
+  };
+
+  const updateQuantity = (id, delta) => {
+    const updatedItems = cart.items.map((item) => {
+      if (item.id === id) {
+        const newQuantity = item.quantity + delta;
+        return {
+          ...item,
+          quantity: newQuantity > 0 ? newQuantity : 1,
+        };
+      }
+      return item;
     });
+
+    const newTotal = updatedItems.reduce(
+      (acc, item) => acc + item.price * item.quantity,
+      0
+    );
+
+    setCart({ items: updatedItems, total: newTotal });
   };
 
   const handleCheckout = () => {
@@ -36,7 +67,7 @@ function Items({ id, name, price }) {
       id: item.id,
       name: item.name,
       price: item.price,
-      quantity: 1,
+      quantity: item.quantity,
     }));
 
     fetch("http://localhost:8000/checkout/", {
@@ -61,7 +92,6 @@ function Items({ id, name, price }) {
 
   return (
     <div className="w-full px-4 py-6">
-      {/* Cart Toggle Button */}
       <div className="flex justify-end mb-6">
         <button
           className="bg-yellow-500 hover:bg-yellow-600 text-white font-semibold px-4 py-2 rounded"
@@ -72,7 +102,6 @@ function Items({ id, name, price }) {
         </button>
       </div>
 
-      {/* Sidebar (Cart) */}
       <div
         id="cartSidebar"
         className="fixed top-0 left-0 w-80 h-full bg-white shadow-lg p-6 z-50 overflow-y-auto hidden"
@@ -101,20 +130,15 @@ function Items({ id, name, price }) {
         {cart.items.map((item) => (
           <ProductList
             key={item.id}
-            id={item.id}
-            name={item.name}
-            price={item.price}
+            item={item}
             handleRemove={handleRemove}
-            cart={cart}
-            cartItems={cartItems}
-            handleCartChange={setCartItems}
+            updateQuantity={updateQuantity}
           />
         ))}
 
         <p className="mt-4 font-semibold">Total: ${cart.total.toFixed(2)}</p>
       </div>
 
-      {/* Item Table */}
       <div className="overflow-x-auto bg-white rounded shadow p-4">
         <table className="min-w-full text-center border border-gray-200 table-fixed">
           <thead className="bg-gray-100 border-b border-gray-300">
@@ -134,8 +158,6 @@ function Items({ id, name, price }) {
                 name={curItem.name}
                 price={curItem.price}
                 handleClick={handleClick}
-                cartItems={cartItems}
-                handleCartChange={setCartItems}
               />
             ))}
           </tbody>
